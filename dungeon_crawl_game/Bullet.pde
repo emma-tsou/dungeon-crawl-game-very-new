@@ -19,6 +19,7 @@ class Bullet extends GameObject {
  }
  
  void act() {
+   loc.add(vel);
  }
 }
 

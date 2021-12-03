@@ -44,6 +44,11 @@ void drawRoom() {
   rect(width/2, height/2, width*0.8, height*0.8);
 
 
+  
+  
+}
+
+void drawGameObject() {
   int i = 0; 
   while (i < myObjects.size()) {
     GameObject obj = myObjects.get(i);
@@ -57,11 +62,6 @@ void drawRoom() {
     }
     i++;
   }
-  
-}
-
-void drawGameObject() {
-  
 }
 
 void drawLightLayer() {
@@ -73,9 +73,11 @@ void drawMiniMap() {
   for (int x = 0; x < map.width; x++) {
     for (int y = 0; y < map.height; y++) {
       fill(map.get(x, y), 100);
+      noStroke();
       square(x*size+50, y*size+50, size);
     }
   }
   fill(purple);
+  square(myHero.roomX*size+50, myHero.roomY*size+50, size);
   
 }

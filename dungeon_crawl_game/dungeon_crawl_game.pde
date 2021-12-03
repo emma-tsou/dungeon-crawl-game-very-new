@@ -34,7 +34,7 @@ color Dbrown = #6B4F00;
 //color brown = #987G1D;
 color black = #000000;
 color gray = #4D4242;
-
+color red = #FF0000;
 
 //settings: weapons
 
@@ -67,9 +67,9 @@ void setup() {
   myObjects = new ArrayList<GameObject>(1000);
   myHero = new Hero();
   myObjects.add(myHero); 
-  myObjects.add(new Enemy());
-  myObjects.add(new Follower(1, 2));
-  myObjects.add(new Follower(2, 1));
+  ////myObjects.add(new Enemy());
+  //myObjects.add(new Follower(1, 2));
+  //myObjects.add(new Follower(2, 1));
 
   //create darkness
   darkness = new ArrayList<DarknessCell>(1000);
@@ -84,6 +84,23 @@ void setup() {
       x = 0;
       y += size;
     }
+  }
+  
+  x = 0;
+  y = 0;
+  while (y < map.height) {
+   color roomColor = map.get(x, y);
+   
+   if (roomColor == red) {
+    myObjects.add(new Follower (x, y, width*0.3, height/2));
+    myObjects.add(new Follower (x, y, width*0.7, height/2));
+   }
+   
+   x++;
+   if (x == map.width) {
+    x = 0;
+    y++;
+   }
   }
 
 
@@ -132,19 +149,4 @@ void draw() {
   } else {
     println ("Mode error : " + mode);
   }
-}
-
-
-void keyPressed() {
-  if (key == 'w' || key == 'W') w = true;
-  if (key == 'a' || key == 'A') a = true;
-  if (key == 's' || key == 'S') s = true;
-  if (key == 'd' || key == 'D') d = true;
-}
-
-void keyReleased() {
-  if (key == 'w' || key == 'W') w = false;
-  if (key == 'a' || key == 'A') a = false;
-  if (key == 's' || key == 'S') s = false;
-  if (key == 'd' || key == 'D') d = false;
 }

@@ -25,8 +25,8 @@ class GameObject {
     //check for hitting walls
     if (loc.x < width*0.1) loc.x = width*0.1;
     if (loc.x > width*0.9) loc.x = width*0.9;
-    if (loc.y < width*0.1) loc.y = width*0.1;
-    if (loc.y > width*0.9) loc.y = width*0.9;
+    if (loc.y < height*0.1) loc.y = height*0.1;
+    if (loc.y > height*0.9) loc.y = height*0.9;
   }
   boolean inRoomWith (GameObject myObj) {
     if (roomX == myObj.roomX && roomY == myObj.roomY)
