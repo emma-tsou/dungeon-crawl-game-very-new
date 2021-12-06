@@ -65,7 +65,13 @@ void drawGameObject() {
 }
 
 void drawLightLayer() {
-  
+  int l = 0;
+  while (l < darkness.size()) {
+   DarknessCell dark = darkness.get(l);
+   dark.show();
+   dark.act();
+   l++;
+  }
 }
 
 void drawMiniMap() {

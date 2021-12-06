@@ -4,8 +4,9 @@ class AnimatedGIF {
   PImage[] images;
   int numFrames;
   int currentFrame;
-  int i;
+  //int i;
   float x, y, w, h;
+  int rate;
  
   //constructors
   AnimatedGIF(int nf, String pre, String post) {
@@ -22,6 +23,18 @@ class AnimatedGIF {
       i++;
     }
     currentFrame = 0;
+  }
+  
+  AnimatedGIF(int nf, int r, String pre, String post) {
+    numFrames = nf;
+    images = new PImage[numFrames];
+    int i = 0;
+    while (i < numFrames) {
+      images[i] = loadImage(pre+i+post);
+      i++;
+    }
+    currentFrame = 0;
+    rate = r;
   }
 
 AnimatedGIF(int nf, String pre, String post, float _x, float _y, float _w, float _h) {

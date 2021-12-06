@@ -1,7 +1,9 @@
 class Hero extends GameObject {
 
   float speed;
+  int immunity;
   Weapon myWeapon;
+  AnimatedGIF currentAction;
 
   Hero() {
     super();
@@ -11,15 +13,19 @@ class Hero extends GameObject {
     myWeapon = new SniperRifle();
     hp = 100;
     size = 40;
+    currentAction= manDown;
+    immunity = 0;
   }
 
 
   void show() {
-    //Character
-    fill(purple);
-    stroke(black);
-    strokeWeight(2);
-    circle(loc.x, loc.y, size);
+    ////Character
+    //fill(purple);
+    //stroke(black);
+    //strokeWeight(2);
+    //circle(loc.x, loc.y, size);
+    
+    currentAction.show(loc.x, loc.y, size, size);
     
     //Health Bar
     rectMode(CORNER);
@@ -82,8 +88,9 @@ class Hero extends GameObject {
         hp = hp - 10;
         myObj.hp = 0;
       }
-      if (myObj instanceof Enemy && isCollidingWith(myObj)) {
-       hp--; 
+      if (myObj instanceof Enemy && isCollidingWith(myObj) & immunity > 5) {
+       hp = hp-2;
+       immunity = 0;
       }
       if (myObj instanceof DroppedItem && isCollidingWith(myObj)) {
         DroppedItem item = (DroppedItem) myObj;
@@ -94,5 +101,6 @@ class Hero extends GameObject {
       }
       i++;
     }
+    immunity++;
   }//end of act
 }//end of class

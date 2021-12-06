@@ -49,6 +49,10 @@ ArrayList <DarknessCell> darkness;
 ArrayList<GameObject> myObjects;
 
 AnimatedGIF nightsky;
+AnimatedGIF manUp;
+AnimatedGIF manDown;
+AnimatedGIF manLeft;
+AnimatedGIF manRight;
 
 
 void setup() {
@@ -65,6 +69,10 @@ void setup() {
   map = loadImage("map.png");
   //create objects
   myObjects = new ArrayList<GameObject>(1000);
+  manUp = new AnimatedGIF(4, 10, "man/up/sprite_", ".png");
+  manDown = new AnimatedGIF(4, 10, "man/down/sprite_", ".png");
+  manLeft = new AnimatedGIF(4, 10, "man/left/sprite_", ".png");
+  manRight = new AnimatedGIF(4, 10, "man/right/sprite_", ".png");
   myHero = new Hero();
   myObjects.add(myHero); 
   ////myObjects.add(new Enemy());
@@ -73,16 +81,16 @@ void setup() {
 
   //create darkness
   darkness = new ArrayList<DarknessCell>(1000);
-  int size = 10;
+  int size = 5;
   int x = size/2; 
   int y = size/2;
 
-  while (y < map.height) {
+  while (y < height) {
     darkness.add(new DarknessCell(x, y, size)); 
-    x += size;
-    if (x >= map.width) {
-      x = 0;
-      y += size;
+    x = x + size;
+    if (x >= width+1) {
+      y = y+size;
+      x = size/2;
     }
   }
   
@@ -92,9 +100,18 @@ void setup() {
    color roomColor = map.get(x, y);
    
    if (roomColor == red) {
-    //myObjects.add(new Follower (x, y, width*0.3, height/2));
-    //myObjects.add(new Follower (x, y, width*0.7, height/2));
     myObjects.add(new Turret(x, y, width*0.3, height/2));
+    myObjects.add(new Turret(x, y, width*0.7, height/2));
+   }
+   
+   if (roomColor == blue) {
+     myObjects.add(new Follower(x, y, width*0.3, height/2));
+     myObjects.add(new Follower(x, y, width*0.7, height/2));
+   }
+   
+   if (roomColor == yellow) {
+     myObjects.add(new Spawner(x, y, width*0.3, height/2));
+     myObjects.add(new Spawner(x, y, width*0.7, height/2));
    }
    
    x++;
