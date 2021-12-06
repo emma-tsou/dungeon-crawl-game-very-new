@@ -10,6 +10,7 @@ class Hero extends GameObject {
     roomY = 1;
     myWeapon = new SniperRifle();
     hp = 100;
+    size = 40;
   }
 
 
@@ -18,7 +19,7 @@ class Hero extends GameObject {
     fill(purple);
     stroke(black);
     strokeWeight(2);
-    circle(loc.x, loc.y, 40);
+    circle(loc.x, loc.y, size);
     
     //Health Bar
     rectMode(CORNER);

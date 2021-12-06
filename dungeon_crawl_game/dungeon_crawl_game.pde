@@ -92,8 +92,9 @@ void setup() {
    color roomColor = map.get(x, y);
    
    if (roomColor == red) {
-    myObjects.add(new Follower (x, y, width*0.3, height/2));
-    myObjects.add(new Follower (x, y, width*0.7, height/2));
+    //myObjects.add(new Follower (x, y, width*0.3, height/2));
+    //myObjects.add(new Follower (x, y, width*0.7, height/2));
+    myObjects.add(new Turret(x, y, width*0.3, height/2));
    }
    
    x++;

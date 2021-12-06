@@ -44,5 +44,6 @@ class EnemyBullet extends GameObject {
  }
  
  void act() {
+   loc.add(vel);
  }
 }
