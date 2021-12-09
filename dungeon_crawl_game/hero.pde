@@ -4,9 +4,11 @@ class Hero extends GameObject {
   int immunity;
   Weapon myWeapon;
   AnimatedGIF currentAction;
+  int transparency_counter;
 
   Hero() {
     super();
+    hpMax = hp = 100;
     speed = 3;
     roomX = 1;
     roomY = 1;
@@ -33,6 +35,8 @@ class Hero extends GameObject {
     stroke(black);
     strokeWeight(1);
     rect(loc.x-50, loc.y+50, 100, 15);
+    
+    
     
     fill(green);
     stroke(black);
@@ -115,4 +119,13 @@ class Hero extends GameObject {
     }
     immunity++;
   }//end of act
+  
+  void pickUp (DroppedItem item) {
+    if (item.type == HEALTH) {
+      hp = hp + 10;
+      if (hp > hpMax) hp = hpMax {
+    } else if (item type == GUN) {
+    }
+  }
+  
 }//end of class
