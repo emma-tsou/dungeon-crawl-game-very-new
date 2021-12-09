@@ -16,6 +16,7 @@ class Spawner extends Enemy {
  }
  
  void act() {
+   super.act();
    //spawn follower thingy
    timer++;
    if (timer == 600) {

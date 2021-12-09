@@ -12,7 +12,7 @@ class Hero extends GameObject {
     roomY = 1;
     myWeapon = new SniperRifle();
     hp = 100;
-    size = 40;
+    size = 60;
     currentAction= manDown;
     immunity = 0;
   }
@@ -44,10 +44,22 @@ class Hero extends GameObject {
   void act() {
     super.act();
     //zoom
-    if (w) vel.y = -speed;
-    if (a) vel.x = -speed;
-    if (s) vel.y = speed;
-    if (d) vel.x = speed;
+    if (w) {
+      vel.y = -speed;
+      currentAction = manUp;
+    }
+    if (a) {
+      vel.x = -speed;
+      currentAction = manLeft;
+    }
+    if (s) {
+      vel.y = speed;
+      currentAction = manDown;
+    }
+    if (d) {
+      vel.x = speed;
+      currentAction = manRight;
+    }
 
     if (vel.mag() > 5) vel.setMag(speed); 
 

@@ -1,4 +1,4 @@
 void gameOver() {
-  
+  background(red);
   
 }

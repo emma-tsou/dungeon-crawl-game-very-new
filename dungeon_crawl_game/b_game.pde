@@ -3,6 +3,11 @@ void game() {
   drawGameObject();
   drawLightLayer();
   drawMiniMap();
+  
+  if (myHero.hp <= 0) {
+    mode = GAMEOVER;
+  }
+  
 }
 
 void drawRoom() {

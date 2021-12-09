@@ -36,6 +36,9 @@ color black = #000000;
 color gray = #4D4242;
 color red = #FF0000;
 
+//mouse
+boolean mouseReleased;
+boolean wasPressed;
 //settings: weapons
 
 
@@ -47,6 +50,8 @@ ArrayList <DarknessCell> darkness;
 
 //Game objects
 ArrayList<GameObject> myObjects;
+
+Button introButton;
 
 AnimatedGIF nightsky;
 AnimatedGIF manUp;
@@ -69,6 +74,9 @@ void setup() {
   map = loadImage("map.png");
   //create objects
   myObjects = new ArrayList<GameObject>(1000);
+  
+  introButton = new Button("START", width/2, height/2, 200, 100, red, black);
+  
   manUp = new AnimatedGIF(4, 10, "man/up/sprite_", ".png");
   manDown = new AnimatedGIF(4, 10, "man/down/sprite_", ".png");
   manLeft = new AnimatedGIF(4, 10, "man/left/sprite_", ".png");
@@ -133,7 +141,7 @@ void setup() {
   AnimatedGIF introGIF;
 
   //Initialize
-  mode = GAME;
+  mode = INTRO;
 
   //loading the enemies from the map
   x = 0;
