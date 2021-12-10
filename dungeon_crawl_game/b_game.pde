@@ -3,9 +3,13 @@ void game() {
   drawGameObject();
   drawLightLayer();
   drawMiniMap();
-  
   if (myHero.hp <= 0) {
     mode = GAMEOVER;
+  }
+  
+  if (e) {
+    e = false;
+    mode = PAUSE;
   }
   
 }

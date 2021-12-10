@@ -5,6 +5,7 @@ class Turret extends Enemy {
     super(100, 50, x, y, posx, posy);
     timer = 0;
     bulletSpeed = 4;
+     xp = 5;
   }
 
   void show() {

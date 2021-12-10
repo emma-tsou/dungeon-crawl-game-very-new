@@ -47,6 +47,7 @@ class Enemy extends GameObject {
 
   void act() {
     super.act();
+  
 
     int i = 0;
     while (i < myObjects.size()) {
@@ -56,6 +57,9 @@ class Enemy extends GameObject {
         obj.hp = 0;
         if (hp <= 0) {
           //explode(size);
+          myObjects.add(new Message(loc, "+"+xp));
+          myHero.xp = myHero.xp + xp;
+          //dropped items
           myObjects.add(new DroppedItem(loc.x, loc.y, roomX, roomY));
         }
       }

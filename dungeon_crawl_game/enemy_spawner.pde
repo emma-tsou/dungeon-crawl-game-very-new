@@ -3,6 +3,7 @@ class Spawner extends Enemy {
  Spawner(int x, int y, float posx, float posy) {
    super(100, 50, x, y, posx, posy);
    timer = 300;
+    xp = 10;
  }
  
  void show() {

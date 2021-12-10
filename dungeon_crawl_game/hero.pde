@@ -17,6 +17,7 @@ class Hero extends GameObject {
     size = 60;
     currentAction= manDown;
     immunity = 0;
+    xp = 100;
   }
 
 
@@ -26,23 +27,22 @@ class Hero extends GameObject {
     //stroke(black);
     //strokeWeight(2);
     //circle(loc.x, loc.y, size);
-    
+
     currentAction.show(loc.x, loc.y, size, size);
-    
+
     //Health Bar
     rectMode(CORNER);
     fill(red);
     stroke(black);
     strokeWeight(1);
     rect(loc.x-50, loc.y+50, 100, 15);
-    
-    
-    
+
+
+
     fill(green);
     stroke(black);
     strokeWeight(1);
     rect(loc.x-50, loc.y+50, hp, 15);
-    
   }
 
   void act() {
@@ -91,11 +91,11 @@ class Hero extends GameObject {
       roomX = roomX - 1;
       loc = new PVector(width*0.9-10, height/2);
     }
-    
+
     //gun go bang bang pew pew
     myWeapon.update();
     if (space) myWeapon.shoot();
-    
+
     //check for collisions
     int i = 0;
     while (i < myObjects.size()) {
@@ -105,8 +105,8 @@ class Hero extends GameObject {
         myObj.hp = 0;
       }
       if (myObj instanceof Enemy && isCollidingWith(myObj) & immunity > 5) {
-       hp = hp-2;
-       immunity = 0;
+        hp = hp-2;
+        immunity = 0;
       }
       if (myObj instanceof DroppedItem && isCollidingWith(myObj)) {
         DroppedItem item = (DroppedItem) myObj;
@@ -118,14 +118,15 @@ class Hero extends GameObject {
       i++;
     }
     immunity++;
+    if (hp > hpMax) hp = hpMax;
+    println(hp, hpMax, xp);
   }//end of act
-  
-  void pickUp (DroppedItem item) {
-    if (item.type == HEALTH) {
-      hp = hp + 10;
-      if (hp > hpMax) hp = hpMax {
-    } else if (item type == GUN) {
-    }
-  }
-  
+
+  //void pickUp (DroppedItem item) {
+  //  if (item.type == HEALTH) {
+  //    hp = hp + 10;
+  //    if (hp > hpMax) hp = hpMax {
+  //  } else if (item type == GUN) {
+  //  }
+  //}
 }//end of class

@@ -4,6 +4,7 @@ void keyPressed() {
   if (key == 's' || key == 'S') s = true;
   if (key == 'd' || key == 'D') d = true;
   if (key == ' ') space = true;
+  if (key == 'e' || key == 'E') e = true;
 }
 
 void keyReleased() {
@@ -12,4 +13,5 @@ void keyReleased() {
   if (key == 's' || key == 'S') s = false;
   if (key == 'd' || key == 'D') d = false;
   if (key == ' ') space = false;
+  if (key == 'e' || key == 'E') e = false;
 }

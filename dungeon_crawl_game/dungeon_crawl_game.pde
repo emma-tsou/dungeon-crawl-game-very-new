@@ -21,7 +21,7 @@ final int x = 0;
 final int y = 0;
 
 //keyboard input
-boolean w, a, s, d, space;
+boolean w, a, s, d, e, space;
 
 //color pallette
 color blue = #1EE7FB;
@@ -52,6 +52,7 @@ ArrayList <DarknessCell> darkness;
 ArrayList<GameObject> myObjects;
 
 Button introButton;
+Button hpButton;
 
 AnimatedGIF nightsky;
 AnimatedGIF manUp;
@@ -76,6 +77,7 @@ void setup() {
   myObjects = new ArrayList<GameObject>(1000);
   
   introButton = new Button("START", width/2, height/2, 200, 100, red, black);
+  hpButton = new Button("HP", width/2, height*0.3, 100, 100, red, black);
   
   manUp = new AnimatedGIF(4, 10, "man/up/sprite_", ".png");
   manDown = new AnimatedGIF(4, 10, "man/down/sprite_", ".png");
